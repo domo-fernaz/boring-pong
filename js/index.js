@@ -1,3 +1,5 @@
+let run = 0;
+
 let canvas = document.getElementById("candice");
 let ctx = canvas.getContext("2d");
 
@@ -15,10 +17,11 @@ function obj(x, y, w, h) {
 let player = new obj(0, 0, 10, 25);
 let ball = new obj(390, 250, 10, 10);
 
-setInterval(() => {
-  ctx.fillColor = "#000000";
-  ctx.fillRect(0, 0, 800, 600);
+if (run)
+  setInterval(() => {
+    ctx.fillColor = "#000000";
+    ctx.fillRect(0, 0, 800, 600);
 
-  ball.draw();
-  player.draw();
-}, 17);
+    ball.draw();
+    player.draw();
+  }, 17);
