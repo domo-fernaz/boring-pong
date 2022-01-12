@@ -1,4 +1,4 @@
-let canvas = document.GetElementById("candice");
+let canvas = document.getElementById("candice");
 let ctx = canvas.getContext("2d");
 
 //Code
