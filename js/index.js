@@ -1,4 +1,4 @@
-let run = 0;
+let run = true;
 
 let canvas = document.getElementById("candice");
 let ctx = canvas.getContext("2d");
@@ -16,6 +16,26 @@ function obj(x, y, w, h) {
 
 let player = new obj(0, 0, 10, 25);
 let ball = new obj(390, 250, 10, 10);
+ball.momentum = {
+  x: 0,
+  y: 0
+};
+
+document.addEventListener("keydown", (e) => {
+  switch(e.key)
+  {
+    case 'w':
+      if(player.y + player.h < 600)
+        player.y++;
+      break;
+    case: 's':
+      if(player.y > 0)
+        player.y--;
+      break;
+    default:
+      break;
+  };
+});
 
 if (run)
   setInterval(() => {
@@ -24,4 +44,11 @@ if (run)
 
     ball.draw();
     player.draw();
+    
+    if(ball.x < player.x + player.w && player.y < ball.y + ball.h && player.y + player.h > ball.y)
+      ball.momentum.x = 1;
+    if(ball.x + ball.w > 790)
+      ball.momentum.x = -1;
+    
+    ball.x += ball.momentum.x;
   }, 17);
